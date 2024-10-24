@@ -1,0 +1,365 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Sans-Serif;
+  user-select: none;
+}
+.container {
+  height: 100%;
+  width: 100%;
+}
+.download {
+  position: absolute;
+  top: 250px;
+  right: 45px;
+  width: 800px;
+  height: 40px;
+  background-image: -webkit-linear-gradient(bottom, rgba(23, 163, 39,.075), rgba(23, 163, 39,.045));
+  background-image: linear-gradient(to top, rgba(23, 163, 39,.075), rgba(23, 163, 39,.045));
+    box-shadow: inset 0 -1px 0 rgba(23, 163, 39,.09),inset 0 1px 0 rgba(23, 163, 39,.04), 0 0 1px rgba(23, 163, 39,.3), 0 0 10px rgba(23, 163, 39,.1);
+  border-radius: 0px;
+  color: rgba(23, 163, 39,.9);
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: 5px;
+  overflow: hidden;
+  transition: all .3s cubic-bezier(.67,.13,.1,.81), transform .15s cubic-bezier(.67,.13,.1,.81);
+}
+
+.download:hover {
+  right: 50px;
+  width: 400px;
+}
+.download:active {
+  transform: translateY(3px);
+}
+.download:before, .download:after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transition: all .3s cubic-bezier(.67,.13,.1,.81);
+}
+.download:before {
+	content: 'Install';
+}
+.download:after {
+	content: 'Thank You For Installing';
+	top: -60px;
+	opacity: 0;
+}
+.download:hover:after {
+	top: 0px;
+	opacity: 1;
+}
+.download:hover:before {
+	top: 60px;
+	opacity: 0;
+}
+.platforms a:nth-child(1) {
+  transition-delay: .1s;
+}
+.platforms:target a {
+  top: 10px;
+}
+.platforms a:hover {
+  background: #E5F4FF;
+  box-shadow: 0 0 0 1px #A5CFFF;
+}
+.platforms a:before {
+  content: attr(data-os);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.platforms a:after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 120px;
+  line-height: 140px;
+  text-align: center;
+	font-size: 300%;
+	transform: scale(1.25);
+	transform-origin: center center;
+}
+
+.installer {
+	position: fixed;
+  top: 300px;
+	left: 100px;
+	width: 650px;
+	height: 200px;
+	background: #d5e3de;
+	border-radius: 20px;
+	visibility: visible;
+	transform: scale(.9);
+	opacity: 0;
+	transition: all .3s cubic-bezier(.67,.13,.1,.81);
+}
+.installer:target {
+	visibility: visible;
+	transform: scale(1);
+	opacity: 1;
+}
+.installer a.back {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	text-align: center;
+	font-size: 200%;
+	color: #bbb;
+}
+.installer a.back:before {
+	content: '\f129';
+}
+.installer a.back:after {
+	content: 'Back';
+	position: absolute;
+  top: 7px;
+	left: 30px;
+	height: 20;
+	line-height: 20px;
+	font-size: 40%;
+	text-align: center;
+	color: #cacaca;
+	border-radius: 5px;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .2s cubic-bezier(.67,.13,.1,.81);
+}
+.installer a.back:hover:after {
+	left: 38px;
+	opacity: 1;
+}
+.installer a.close {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	font-size: 200%;
+	color: #bbb;
+}
+.installer a.close:before {
+	content: '\f405';
+}
+.installer a.close:after {
+	content: 'Close';
+	position: absolute;
+	top: 7px;
+	right: 30px;
+	height: 20px;
+	line-height: 20px;
+  font-size: 40%;
+	text-align: center;
+	color: #cacaca;
+	border-radius: 5px;
+	pointer-events: none;
+	opacity: 0;
+	transition: all .2s cubic-bezier(.67,.13,.1,.81);
+}
+.installer a.close:hover:after {
+	right: 38px;
+	opacity: 1;
+}
+
+.installer .info {
+	position: absolute;
+	top: 40px;
+  left: 40px;
+	height: calc(100% - 80px);
+	width: 200px;
+}
+.installer .info:before {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 180px;
+	height: 220px;
+	line-height: 220px;
+	text-align: center;
+	font-size: 1000%;
+	color: #3F8EFC;
+}
+.installer .info:after {
+	content: attr(data-weight);
+  position: relative;
+	bottom: 0px;
+	left: 0px;
+	width: 180px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	font-size: 100%;
+	font-weight: bolder;
+	letter-spacing: 2px;
+	color: #eb8213;
+}
+
+.installer .details {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  height: 200px;
+  width: calc(100% - 280px);
+  padding: 10px;
+}
+.installer .details p {
+  margin: 0px;
+  font-weight: bolder;
+  font-size: 120%;
+  color: #444;
+}
+.installer .details span {
+	color:#e0352f;
+}
+.installer .details ul {
+	padding-left: 0px;
+	list-style: none;
+	color: #888;
+}
+.installer .details ul li {
+	margin-left: 0px !important;
+	margin-bottom: 8px;
+	opacity: 0;
+	transition: all .3s cubic-bezier(.67,.13,.1,.81);
+}
+.installer .details ul li:before {
+  content: '';
+	margin-right: 0;
+}
+.installer:target .details ul li {
+	margin-left: 10px;
+	opacity: 1;
+}
+.installer:target .details ul li:nth-child(1) {
+	transition-delay: .1s;
+}
+.installer:target .details ul li:nth-child(2) {
+	transition-delay: .2s;
+}
+.installer:target .details ul li:nth-child(3) {
+	transition-delay: .3s;
+}
+.installer:target .details ul li:nth-child(4) {
+  transition-delay: .4s;
+}
+
+.installer:target .details ul li:nth-child(4) {
+  transition-delay: .4s;
+}
+
+.button label {
+  position: absolute;
+  bottom: 20px;
+  right: 90px;
+  height: 40px;
+  width: calc(100% - 320px);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.button label input {
+  display: none;
+}
+.button label span {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+	background: #3F8EFC;
+}
+.button input:checked ~ span {
+	background: #87E544;
+	animation: downloadSuccess 3.1s ease;
+}
+.button:after {
+	content: 'Install';
+	position: absolute;
+	width: 80%;
+  height: 100%;
+	top: 0px;
+	left: 10%;
+}
+.button input:checked ~ span:after {
+	content: 'Thank You For Install!';
+	animation: downloadState 10s;
+}
+.button:before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	background: rgba(255,255,255,.2);
+}
+.button input:checked ~ span:before {
+	animation: downloadProgress 10s cubic-bezier(.67,.13,.1,.81);
+}
+
+@keyframes downloadSuccess {
+	0%, 90% {
+		background: #3F8EFC;
+	}
+	100% {
+		background: #87E544;
+	}
+}
+
+@keyframes downloadState {
+	0%, 95% {
+    content: 'Installing...'
+	}
+	100% {
+		content: 'Thank You For Install!'
+	}
+}
+
+@keyframes downloadProgress {
+	0% {
+		width: 5%;
+		opacity: 1;
+	}
+	35% {
+		width: 17%;
+	}
+	64% {
+		width: 51%;
+  }
+	81% {
+		width: 70%;
+	}
+	90% {
+		width: 86%;
+		opacity: 1;
+	}
+	100% {
+		width: 100%;
+		opacity: 0;
+	}
+}
+h1 i{
+  margin-right: 10px;
+}
+.container {
+  align-items: center; 
+  float: left;
+}
+.image{
+    float: left;
+  padding: 10px;
+}
